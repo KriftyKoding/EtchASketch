@@ -21,13 +21,14 @@ main{
   color: #999999;
   color: #CCCCCC;
   color: #771100;
+  margin-bottom: 2.1rem;
 }
 
 .fixed-footer{
   width: 100%;
   position: fixed;        
   background: #7a7a7a;
-  padding: 11px;
+  padding: .3rem;
   margin-left: -10px;
   color: #FF9900;
   bottom: 0;
@@ -39,3 +40,12 @@ main{
   vertical-align: bottom;
   padding: 0 2px;
 }
+
+.grid{
+  border: black solid .1rem;
+  background-color: coral;
+  height: 2.2rem;
+  width: 2.2rem;
+}
+
+
