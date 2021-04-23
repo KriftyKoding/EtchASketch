@@ -2,7 +2,6 @@
   Position:fixed;
   Top: 0;
   left: 0%;
-  /* Width: 100vh; */
   Height: 100vh;
   Opacity: 0.35;
   Z-index: -5000;
@@ -12,6 +11,7 @@
   width:100vw;
   height: 135vh;
   object-fit: cover;
+
 }
 
 main{
@@ -41,7 +41,7 @@ main{
   padding: 0 .3rem;
 }
 
-  #container{
+#container{
     /* position and size */
     position: fixed;
     bottom: 2.4rem;
@@ -52,14 +52,13 @@ main{
     /* flexbox controls */
     display: flex;
     flex-wrap: wrap;
-  }
+   }
 
 .grid{
   border: black solid .1rem;
-  background-color: coral;
+  background-color: #CC6633;
   flex-basis: 5.5%;
-  
-
+  z-index: 1;
 }
 
 
