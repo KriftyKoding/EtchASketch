@@ -6,7 +6,7 @@ while (divNum < 256) {
   const container = document.querySelector('#container');
   const grid = document.createElement('div');
   grid.classList.add('grid');
-  grid.textContent = 'num ' + divNum;
+  // grid.textContent = divNum;
   container.appendChild(grid);
   
   
