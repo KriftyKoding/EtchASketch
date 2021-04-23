@@ -55,7 +55,7 @@ main{
    }
 
 .grid{
-  border: black solid .1rem;
+  border: rgb(243, 230, 230) solid .1rem;
   background-color: #CC6633;
   flex-basis: 5.5%;
   z-index: 1;

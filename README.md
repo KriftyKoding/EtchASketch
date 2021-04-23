@@ -1,2 +1,5 @@
-changed color of grid
-add hover affect to grid
+add reset button
+
+i hate backgroundcolor!!!!! i keep doing same thing wrongS
+
+add comments to javascript
