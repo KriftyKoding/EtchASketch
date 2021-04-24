@@ -1,5 +1,10 @@
-add reset button
+Adding select grid size (slider)
 
-i hate backgroundcolor!!!!! i keep doing same thing wrongS
+add
+calc grid size
+update gridesize 
+remove old grid
+fix reset so it works with different grid size and original color
 
-add comments to javascript
+need
+listener no longer works
