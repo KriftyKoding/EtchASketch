@@ -1,10 +1,10 @@
-Adding select grid size (slider)
+need fixing
+-listener no longer works when resize (fixed)
+-needs need to change number of squares per row (fixed)
+-changed when thing where called and order so code was easier to read
 
-add
-calc grid size
-update gridesize 
-remove old grid
-fix reset so it works with different grid size and original color
-
-need
-listener no longer works
+to do
+-need to make pretty
+-add random color button
+-add opasity button
+???maybe make cellphone size pretty
