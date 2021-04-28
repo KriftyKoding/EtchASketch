@@ -1,6 +1,9 @@
 
 let divNum = 0;
 let gridSize = 256;
+let color = "green"
+let randnomColorCalc = false;
+
 
 setGridSize(16);
 
@@ -18,7 +21,8 @@ function makeGrid(columnWidth) {
     // grid.style.width(`${columnWidth}rem`)
     container.appendChild(grid);
   }
-  hooverActivate();
+  randnomColorCalc ? console.log("true") : console.log("false");
+  randnomColorCalc ? randnomColor() : hoverActivateColor();
 }
 
 //set number of columns and rows in grid
@@ -28,13 +32,13 @@ function setGridSize(slideAmount){
   
 
 // (hover affect)creates square color chnge
-hooverActivate();
-function hooverActivate(){
+hoverActivateColor();
+function hoverActivateColor(){
   let grid = document.querySelectorAll(".grid");
   grid.forEach(hoover => {
     hoover.addEventListener("mouseover", function(e) {
       const gridNum = e.target.id;
-      document.getElementById(gridNum).style.backgroundColor = 'green' ;      
+      document.getElementById(gridNum).style.backgroundColor = `${color}` ;      
     });
   })
 }
@@ -55,7 +59,7 @@ function removegrid(size) {
 
 
 
-//reset button
+//reset button - reset background to OG color
 function Reset(){
   for (let i = 1; i < (gridSize + 1); i++) { 
   const gridNum = document.querySelector(`#grid${i}`);
@@ -64,3 +68,40 @@ function Reset(){
 }
 
 
+//change grid hoover to random color
+
+// onclick hoover random color
+function randnomColor(){
+  randnomColorCalc = true;
+  let grid = document.querySelectorAll(".grid");
+  grid.forEach(hoover => {
+    hoover.addEventListener("mouseover", function(e) {
+      const gridNum = e.target.id;
+      let color = "#" + (Math.floor(Math.random()*16777215).toString(16));
+      document.getElementById(gridNum).style.backgroundColor = `${color}` ;      
+    });
+  })
+}
+
+
+//select a color for hoover
+document.getElementById("hoverColor").addEventListener("input", function (event) {
+  color = event.target.value;
+  randnomColorCalc = false;
+  hoverActivateColor();
+});
+
+//change opacity as hoover
+function changeOpacity(){
+  let grid = document.querySelectorAll(".grid");
+  grid.forEach(hoover => {
+    hoover.addEventListener("mouseover", function(e) {
+      const gridNum = e.target.id;
+      let currentOpacity = Number(document.getElementById(gridNum).style.opacity);
+      let newOpacity = currentOpacity + .25
+      document.getElementById(gridNum).style.opacity = newOpacity;
+    });
+  })
+}
+
+// i do alot of event lisenter hoover code repeadtedly but need to do different thing for different 
