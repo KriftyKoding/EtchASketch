@@ -57,7 +57,6 @@ main{
 .grid{
   border: rgb(243, 230, 230) solid .1rem;
   background-color: #CC6633;
-  /* width: 1.675rem;  */
   /* calc ((30 rem - borderx2x16 ) / 16 ) */
   z-index: 1;
 }

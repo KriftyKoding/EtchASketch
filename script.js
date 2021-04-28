@@ -17,28 +17,60 @@ function makeGrid(columnWidth) {
     grid.classList.add('grid');
     grid.setAttribute("id", "grid" + divNum);
     grid.setAttribute('style', `width: ${columnWidth}rem`)
-    //set width
-    // grid.style.width(`${columnWidth}rem`)
     container.appendChild(grid);
   }
-  randnomColorCalc ? console.log("true") : console.log("false");
-  randnomColorCalc ? randnomColor() : hoverActivateColor();
+  hoverActivate();
 }
-
-//set number of columns and rows in grid
-function setGridSize(slideAmount){
-  makeGrid(((30 - (.2 * slideAmount))/slideAmount)); // calc info = (gridSize - (borderSize * 2 * numberColumns))/ numberColumns
-}
-  
-
-// (hover affect)creates square color chnge
-hoverActivateColor();
-function hoverActivateColor(){
+//hover function
+function hoverActivate(){
   let grid = document.querySelectorAll(".grid");
   grid.forEach(hoover => {
     hoover.addEventListener("mouseover", function(e) {
       const gridNum = e.target.id;
-      document.getElementById(gridNum).style.backgroundColor = `${color}` ;      
+      randnomColorCalc ? randomColorCalculator(gridNum) : constColor(gridNum);   
+    });
+  })
+}
+
+//reset button - reset background to OG color
+function Reset(){
+  for (let i = 1; i < (gridSize + 1); i++) { 
+  const gridNum = document.querySelector(`#grid${i}`);
+  gridNum.style.backgroundColor = "#CC6633";
+  }
+}
+
+
+// onclick random color reaction
+function randnomColor(){
+  randnomColorCalc = true;
+  hoverActivate();      
+}
+//assign grid random color for hoverActivat()
+function randomColorCalculator(gridNum){
+  let ranColor = "#" + (Math.floor(Math.random()*16777215).toString(16));
+  document.getElementById(gridNum).style.backgroundColor = ranColor; 
+} 
+//onChange constant Color
+function colorChange(newColor){
+  color = newColor;
+  randnomColorCalc = false;
+  hoverActivate();
+}
+//assign grid constant color for hoverActivat()
+function constColor(gridNum){
+  document.getElementById(gridNum).style.backgroundColor = color;
+}
+
+//change opacity as hoover
+function changeOpacity(){
+  let grid = document.querySelectorAll(".grid");
+  grid.forEach(hoover => {
+    hoover.addEventListener("mouseover", function(e) {
+      const gridNum = e.target.id;
+      let currentOpacity = Number(document.getElementById(gridNum).style.opacity);
+      let newOpacity = currentOpacity + .25
+      document.getElementById(gridNum).style.opacity = newOpacity;
     });
   })
 }
@@ -54,54 +86,9 @@ function removegrid(size) {
   for (let i = 1; i < (size + 1); i++) { 
     const removeDiv = document.getElementById(`grid${i}`);
     removeDiv.remove();
-    }
-}
-
-
-
-//reset button - reset background to OG color
-function Reset(){
-  for (let i = 1; i < (gridSize + 1); i++) { 
-  const gridNum = document.querySelector(`#grid${i}`);
-  gridNum.style.backgroundColor = "#CC6633";
   }
 }
-
-
-//change grid hoover to random color
-
-// onclick hoover random color
-function randnomColor(){
-  randnomColorCalc = true;
-  let grid = document.querySelectorAll(".grid");
-  grid.forEach(hoover => {
-    hoover.addEventListener("mouseover", function(e) {
-      const gridNum = e.target.id;
-      let color = "#" + (Math.floor(Math.random()*16777215).toString(16));
-      document.getElementById(gridNum).style.backgroundColor = `${color}` ;      
-    });
-  })
+//set number of columns and rows in grid
+function setGridSize(slideAmount){
+    makeGrid(((30 - (.2 * slideAmount))/slideAmount)); // calc info = (gridSize - (borderSize * 2 * numberColumns))/ numberColumns
 }
-
-
-//select a color for hoover
-document.getElementById("hoverColor").addEventListener("input", function (event) {
-  color = event.target.value;
-  randnomColorCalc = false;
-  hoverActivateColor();
-});
-
-//change opacity as hoover
-function changeOpacity(){
-  let grid = document.querySelectorAll(".grid");
-  grid.forEach(hoover => {
-    hoover.addEventListener("mouseover", function(e) {
-      const gridNum = e.target.id;
-      let currentOpacity = Number(document.getElementById(gridNum).style.opacity);
-      let newOpacity = currentOpacity + .25
-      document.getElementById(gridNum).style.opacity = newOpacity;
-    });
-  })
-}
-
-// i do alot of event lisenter hoover code repeadtedly but need to do different thing for different 
