@@ -1,12 +1,20 @@
 
 let divNum = 0;
 let gridSize = 256;
-let color = "green"
-let randnomColorCalc = false;
-
-
+let color = "#771100"
+let randnomColorCalcVar = false;
+let opacityState = false;
+let opacityIncreaseVar = false;
 setGridSize(16);
 
+
+//************************************************************************************************************************************************************************
+//**********************************************************Create Gride**************************************************************************************************
+//************************************************************************************************************************************************************************
+//set number of columns and rows in grid
+function setGridSize(slideAmount){
+    makeGrid(((30 - (.2 * slideAmount))/slideAmount)); // calc info = (gridSize - (borderSize * 2 * numberColumns))/ numberColumns
+}
 // creates grid
 function makeGrid(columnWidth) {
   divNum = 0;
@@ -16,10 +24,10 @@ function makeGrid(columnWidth) {
     const grid = document.createElement('div');
     grid.classList.add('grid');
     grid.setAttribute("id", "grid" + divNum);
-    grid.setAttribute('style', `width: ${columnWidth}rem`)
+    grid.setAttribute('style', `width: ${columnWidth}rem; opacity: 1;`);
     container.appendChild(grid);
   }
-  hoverActivate();
+  hoverActivate(); 
 }
 //hover function
 function hoverActivate(){
@@ -27,23 +35,28 @@ function hoverActivate(){
   grid.forEach(hoover => {
     hoover.addEventListener("mouseover", function(e) {
       const gridNum = e.target.id;
-      randnomColorCalc ? randomColorCalculator(gridNum) : constColor(gridNum);   
+      randnomColorCalcVar ? randomColorCalculator(gridNum) : constColor(gridNum);   
+      opacityState ? changeOpacity(gridNum) : null;
     });
   })
 }
-
-//reset button - reset background to OG color
+//************************************************************************************************************************************************************************
+//**********************************************************Reset Grid to Original State**********************************************************************************
+//************************************************************************************************************************************************************************
+//~OnClick~ reset
 function Reset(){
-  for (let i = 1; i < (gridSize + 1); i++) { 
-  const gridNum = document.querySelector(`#grid${i}`);
-  gridNum.style.backgroundColor = "#CC6633";
-  }
+  let slideAmount = document.getElementById("slide").value;
+  updateSlider(slideAmount);
+  opacityTaggle("false");
+  randnomColorCalcVar = false;
 }
 
-
-// onclick random color reaction
+//************************************************************************************************************************************************************************
+//**********************************************************Grid Color****************************************************************************************************
+//************************************************************************************************************************************************************************
+//~OnClick ~ random color reaction
 function randnomColor(){
-  randnomColorCalc = true;
+  randnomColorCalcVar = true;
   hoverActivate();      
 }
 //assign grid random color for hoverActivat()
@@ -51,10 +64,10 @@ function randomColorCalculator(gridNum){
   let ranColor = "#" + (Math.floor(Math.random()*16777215).toString(16));
   document.getElementById(gridNum).style.backgroundColor = ranColor; 
 } 
-//onChange constant Color
+//~OnChange~ constant Color
 function colorChange(newColor){
   color = newColor;
-  randnomColorCalc = false;
+  randnomColorCalcVar = false;
   hoverActivate();
 }
 //assign grid constant color for hoverActivat()
@@ -62,20 +75,48 @@ function constColor(gridNum){
   document.getElementById(gridNum).style.backgroundColor = color;
 }
 
-//change opacity as hoover
-function changeOpacity(){
-  let grid = document.querySelectorAll(".grid");
-  grid.forEach(hoover => {
-    hoover.addEventListener("mouseover", function(e) {
-      const gridNum = e.target.id;
-      let currentOpacity = Number(document.getElementById(gridNum).style.opacity);
-      let newOpacity = currentOpacity + .25
-      document.getElementById(gridNum).style.opacity = newOpacity;
-    });
-  })
+
+//************************************************************************************************************************************************************************
+//**********************************************************Opacity*******************************************************************************************************
+//************************************************************************************************************************************************************************
+//~OnClick~ turn opacity on/off
+function opacityTaggle(selector){
+  selector ? opacityState = eval(selector) : 
+    opacityState ? opacityState = false : opacityState = true;
+};
+//~OnClick~ reset all Opacity
+function opacityRest(){
+  for (let i = 1; i < (gridSize + 1); i++) { 
+    const gridNum = document.querySelector(`#grid${i}`);
+    gridNum.style.opacity = 1;
+    }
+}
+//calc if opacity increases or decreases
+function changeOpacity(gridNum){
+  let currentOpacity = Number(document.getElementById(gridNum).style.opacity);
+  if (currentOpacity >= 1) {opacityIncreaseVar = false};
+  if (currentOpacity <= 0) {opacityIncreaseVar = true};
+  opacityIncreaseVar ? opacityIncrease(gridNum, currentOpacity) : opacityDecrease(gridNum, currentOpacity);
+  
+}
+//keep Opacity the same
+function opacityIncrease(gridNum, currentOpacity){
+  let newOpacity = (currentOpacity + .20)
+  document.getElementById(gridNum).style.opacity = newOpacity; 
+  console.log(newOpacity)
+}
+function opacityDecrease(gridNum, currentOpacity){
+  let newOpacity = (currentOpacity - .20);
+  console.log(currentOpacity);
+  console.log(newOpacity);
+  document.getElementById(gridNum).style.opacity = newOpacity;
 }
 
-//slider button --reset gridsize
+//************************************************************************************************************************************************************************
+//**********************************************************Grid Slider***************************************************************************************************
+//************************************************************************************************************************************************************************
+
+//~OnColick~ reset gridsize
 function updateSlider(slideAmount) {
   removegrid(gridSize);
   gridSize = (slideAmount ** 2);
@@ -87,8 +128,4 @@ function removegrid(size) {
     const removeDiv = document.getElementById(`grid${i}`);
     removeDiv.remove();
   }
-}
-//set number of columns and rows in grid
-function setGridSize(slideAmount){
-    makeGrid(((30 - (.2 * slideAmount))/slideAmount)); // calc info = (gridSize - (borderSize * 2 * numberColumns))/ numberColumns
 }

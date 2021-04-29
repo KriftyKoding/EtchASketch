@@ -1,13 +1,15 @@
 <!-- to do -->
--opacity problem
+????random color saves last color
+-opacity on/off button to change words
 ??background color radio button
-??input type color dont like
 -need to make pretty
 ???maybe make cellphone size pretty
 
 <!-- Current Updtate -->
-work on cleaning codea
-changed event listened to on change
+-add comment lines
+-changed reset button fucntion to call reset grid function and turn off oppacity and random color
+-turned opacicityONoff function to opacityToggle and made it a toggle 
+-changed starting color
 
 <!-- do I have to many functions -->
 updateslide/removegrid/setgrid size
