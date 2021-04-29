@@ -57,6 +57,7 @@ function Reset(){
 //~OnClick ~ random color reaction
 function randnomColor(){
   randnomColorCalcVar = true;
+  opacityTaggle("false");
   hoverActivate();      
 }
 //assign grid random color for hoverActivat()
@@ -68,6 +69,7 @@ function randomColorCalculator(gridNum){
 function colorChange(newColor){
   color = newColor;
   randnomColorCalcVar = false;
+  opacityTaggle("false");
   hoverActivate();
 }
 //assign grid constant color for hoverActivat()
@@ -83,6 +85,8 @@ function constColor(gridNum){
 function opacityTaggle(selector){
   selector ? opacityState = eval(selector) : 
     opacityState ? opacityState = false : opacityState = true;
+    opacityState ? document.getElementById("opacityTaggle").value="Opacity ON" : document.getElementById("opacityTaggle").value="Opacity OFF" 
+
 };
 //~OnClick~ reset all Opacity
 function opacityRest(){
@@ -103,12 +107,9 @@ function changeOpacity(gridNum){
 function opacityIncrease(gridNum, currentOpacity){
   let newOpacity = (currentOpacity + .20)
   document.getElementById(gridNum).style.opacity = newOpacity; 
-  console.log(newOpacity)
 }
 function opacityDecrease(gridNum, currentOpacity){
   let newOpacity = (currentOpacity - .20);
-  console.log(currentOpacity);
-  console.log(newOpacity);
   document.getElementById(gridNum).style.opacity = newOpacity;
 }
 
