@@ -13,7 +13,8 @@ setGridSize(16);
 //************************************************************************************************************************************************************************
 //set number of columns and rows in grid
 function setGridSize(slideAmount){
-    makeGrid(((30 - (.2 * slideAmount))/slideAmount)); // calc info = (gridSize - (borderSize * 2 * numberColumns))/ numberColumns
+  let gridSizeCalc = (((30 - (.2 * slideAmount))/slideAmount))// calc info = (gridWidth - (borderSize * 2 * numberColumns))/ numberColumns
+  makeGrid(gridSizeCalc); 
 }
 // creates grid
 function makeGrid(columnWidth) {
