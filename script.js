@@ -36,7 +36,8 @@ function hoverActivate(){
   grid.forEach(hoover => {
     hoover.addEventListener("mouseover", function(e) {
       const gridNum = e.target.id;
-      randnomColorCalcVar ? randomColorCalculator(gridNum) : constColor(gridNum);   
+      randnomColorCalcVar ? randomColorCalculator(gridNum) : null;   
+      hoverColor(gridNum); 
       opacityState ? changeOpacity(gridNum) : null;
     });
   })
@@ -64,7 +65,11 @@ function randnomColor(){
 //assign grid random color for hoverActivat()
 function randomColorCalculator(gridNum){
   let ranColor = "#" + (Math.floor(Math.random()*16777215).toString(16));
-  document.getElementById(gridNum).style.backgroundColor = ranColor; 
+  if (ranColor.length !== 7) {
+    randomColorCalculator(gridNum);
+    return;
+  }
+  color = ranColor;
 } 
 //~OnChange~ constant Color
 function colorChange(newColor){
@@ -74,8 +79,9 @@ function colorChange(newColor){
   hoverActivate();
 }
 //assign grid constant color for hoverActivat()
-function constColor(gridNum){
+function hoverColor(gridNum){
   document.getElementById(gridNum).style.backgroundColor = color;
+  document.getElementById("selectedColor").setAttribute("value", color)
 }
 
 //~OnClick~ Background change
