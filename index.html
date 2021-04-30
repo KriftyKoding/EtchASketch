@@ -19,8 +19,23 @@
             <button onclick="randnomColor()">Get Random Color</button>
             <input id="opacityTaggle" type="button" onclick="opacityTaggle()" value="Opacity OFF" />
             <button onclick="opacityRest()">Rest all Opacity</button>
-            <!-- <input type="color" id="hoverColor" name="hoverColor" value="#e66465"> -->
             <input type="color" id="selectedColor" value="#771100" onchange="colorChange(this.value);" />
+
+
+            <div class="radio-toolbar">
+                <input type="radio" id="#CC6633"name="radioBackgroundColor" value="#CC6633"  onclick="backgroundColorChange('#CC6633');" checked>
+                     <label for="#CC6633" class="radio" id="test"></label>
+                <input type="radio" id="#FF9900" name="radioBackgroundColor" value="#FF9900"  onclick="backgroundColorChange('#FF9900');">
+                    <label for="#FF9900" class="radio" ></label>
+                <input type="radio" id="#999999"  name="radioBackgroundColor" value="#999999"  onclick="backgroundColorChange('#999999');">
+                     <label for="#999999" class="radio"></label>
+                <input type="radio" id="#CCCCCC"  name="radioBackgroundColor" value="#CCCCCC"  onclick="backgroundColorChange('#CCCCCC');">
+                    <label for="#CCCCCC" class="radio"></label>
+                <input type="radio" id="#771100" name="radioBackgroundColor" value="#771100"  onclick="backgroundColorChange('#771100');">
+                    <label for="#771100" class="radio" ></label>
+            </div>
+            <!-- <p>&nbsp;</p> -->
+           
 
 
             <input id="slide" type="range" min="1" max="100" step="1" value="16" oninput="updateSlider(this.value)">

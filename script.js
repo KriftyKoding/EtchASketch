@@ -78,6 +78,15 @@ function constColor(gridNum){
   document.getElementById(gridNum).style.backgroundColor = color;
 }
 
+//~OnClick~ Background change
+function backgroundColorChange(colorBack){
+  for (let i = 1; i < (gridSize + 1); i++) { 
+    const gridNum = "grid" + i;
+    document.getElementById(gridNum).style.backgroundColor = colorBack;
+
+  }
+}
+
 
 //************************************************************************************************************************************************************************
 //**********************************************************Opacity*******************************************************************************************************
@@ -129,5 +138,18 @@ function removegrid(size) {
   for (let i = 1; i < (size + 1); i++) { 
     const removeDiv = document.getElementById(`grid${i}`);
     removeDiv.remove();
+  }
+}
+
+//************************************************************************************************************************************************************************
+//**********************************************************Radio Button***************************************************************************************************
+//************************************************************************************************************************************************************************
+radio();
+function radio(){
+  let radioButton = document.querySelectorAll(".radio");
+  let radioLength = document.querySelectorAll(".radio").length;
+  for (let i = 0; i < radioLength; i++) { 
+    let radioColor = radioButton[i].getAttribute('for');
+    radioButton[i].style.backgroundColor = radioColor; 
   }
 }
