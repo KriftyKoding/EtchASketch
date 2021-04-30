@@ -36,7 +36,7 @@ function hoverActivate(){
   grid.forEach(hoover => {
     hoover.addEventListener("mouseover", function(e) {
       const gridNum = e.target.id;
-      randnomColorCalcVar ? randomColorCalculator(gridNum) : null;   
+      if (randnomColorCalcVar) {randomColorCalculator(gridNum) };
       hoverColor(gridNum); 
       opacityState ? changeOpacity(gridNum) : null;
     });
@@ -78,7 +78,7 @@ function colorChange(newColor){
   opacityTaggle("false");
   hoverActivate();
 }
-//assign grid constant color for hoverActivat()
+//assign grid color for hoverActivat()
 function hoverColor(gridNum){
   document.getElementById(gridNum).style.backgroundColor = color;
   document.getElementById("selectedColor").setAttribute("value", color)
