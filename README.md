@@ -1,10 +1,9 @@
-<!-- to do -->
-????random color saves last color
--need to make pretty
-???maybe make cellphone size pretty
-
 <!-- Current Updtate -->
-added radio button background color selection
+-- messing with random color and input colorSelector
+-- screw with grid size
+--media querry so look good on phone
+--layout
+--worked on looks
 
 <!-- do I have to many functions -->
 updateslide/removegrid/setgrid size

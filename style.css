@@ -18,7 +18,7 @@
 
 }
 /*  */
-/* Main */
+/* mics */
 /*  */
 main{
 /* color scheme - https://www.colorcombos.com/color-schemes/187/ColorCombo187.html*/
@@ -27,10 +27,22 @@ main{
   color: #999999;
   color: #CCCCCC;
   color: #771100;
-  margin-bottom: 2.1rem;
+  font-size: 17px;
 }
+h1{
+  /* width: 100%; */
+  text-align: center;
+  font-size: 75px;
+  margin: 1.7rem;
+}
+#body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 /*  */
-/*  */
+/* footer */
 /*  */
 .fixed-footer{
   width: 100%;
@@ -40,46 +52,76 @@ main{
   margin-left: -.51rem;
   color: #FF9900;
   bottom: 0;
-  vertical-align: top;
+  z-index: 1;
 }
-
 .fixed-footer img {
   height: 1.3rem;
   vertical-align: bottom;
   padding: 0 .3rem;
 }
-
-/*  */
-/* Radio Button */
-/*  */
-/* .radio input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
-.radio label {
-  display: inline-block;
-  background-color: #ddd;
-  width: 10px;
-  height: 10px;
-  padding: 10px 20px;
-  font-family: sans-serif, Arial;
-  font-size: 16px;
-  border: 2px solid #444;
-  border-radius: 4px;
+#footingPlaceHolder{
+  height: 2.4rem;
+  width: 100%;
+  /* background-color: blue; */
 }
 
-.radio input[type="radio"]:checked + label {
-  background-color:#bfb;
-  border-color: #4c4;
-} */
 
+/*  */
+/* button tool */
+/*  */
+#button-toolbar{
+  background-color: #771100;
+  width: 20rem;
+  height: 45rem;
+  justify-self: right;
+  display: flex;
+  flex-wrap: wrap;
+}
+.button-toolbar{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.button-toolbar-label{
+  width: 100%;
+  height: 3%;
+  color: #FF9900;
+  align-self: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.line {
+  height: .5%;
+  width: 100%;
+  background-color: black;
+}
+#reset{
+  align-content: center;
+}
+button, input{
+  height: 21%;
+  font-size: 15px;
+}
+#selectedColor{
+  width: 40%
+}
+/*  */
+/* Radio Buttons */
+/*  */
 .radio-toolbar {
-  margin: 0px;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .radio-toolbar input[type="radio"] {
   opacity: 0;
-  position: fixed;
+  position: absolute;
   width: 0;
 }
 .radio-toolbar label {
@@ -103,26 +145,38 @@ main{
 /*  */
 /* Grid */
 /*  */
+#containerHolder{
+  /* justify-self:left; */
+  flex-basis: 65%;
+}
 #container{
-    /* position and size */
-    position: fixed;
-    bottom: 2.4rem;
-    left: 50%;
-    transform: translate(-50%);
-    /* changing size affect gridSizeCale */
-    width: 30rem;
-    height: 30rem;
-    /* flexbox controls */
+  width: 45rem;
+  height: 45rem;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 3;
+}
+.grid{
+  border: rgb(243, 230, 230) solid .1rem;                     
+  margin: -.1rem;
+  background-color: #CC6633;
+}
+
+@media screen and (max-width: 1080px) {
+  #containerHolder{
+    order: -1;
+  }
+  #button-toolbar{
+    background-color: #771100;
+    width: 20rem;
+    height: 35rem;
+    margin: 2rem;
+    justify-self: right;
     display: flex;
     flex-wrap: wrap;
-   }
-
-.grid{
-/* changing border affect gridSizeCale */
-  border: rgb(243, 230, 230) solid .1rem;
-  background-color: #CC6633;
-  
-  z-index: 1;
+  }
 }
+
+
 
 

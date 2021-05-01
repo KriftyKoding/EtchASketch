@@ -5,7 +5,30 @@ let color = "#771100"
 let randnomColorCalcVar = false;
 let opacityState = false;
 let opacityIncreaseVar = false;
+let containerSize = 45;
 setGridSize(16);
+
+
+//************************************************************************************************************************************************************************
+//**********************************************************MediaQuery**************************************************************************************************
+//************************************************************************************************************************************************************************
+// Create a condition that targets viewports at least 768px wide
+const mediaQuery = window.matchMedia('(max-width: 1080px)')
+
+function handleTabletChange(e) {
+  // Check if the media query is true
+  if (e.matches) {
+    document.getElementById("slide").value = 3
+    updateSlider(3);
+  }
+  else {
+    document.getElementById("slide").value = 16
+    updateSlider(16);}
+}
+// mediaQuery.addListener(handleTabletChange);
+mediaQuery.addEventListener("change", handleTabletChange);
+handleTabletChange(mediaQuery);
+
 
 
 //************************************************************************************************************************************************************************
@@ -13,7 +36,8 @@ setGridSize(16);
 //************************************************************************************************************************************************************************
 //set number of columns and rows in grid
 function setGridSize(slideAmount){
-  let gridSizeCalc = (((30 - (.2 * slideAmount))/slideAmount))// calc info = (gridWidth - (borderSize * 2 * numberColumns))/ numberColumns
+  let gridSizeCalc = ((containerSize/slideAmount));// calc info = (gridWidth - (borderSize * 2 * numberColumns))/ numberColumns
+
   makeGrid(gridSizeCalc); 
 }
 // creates grid
@@ -101,7 +125,7 @@ function backgroundColorChange(colorBack){
 function opacityTaggle(selector){
   selector ? opacityState = eval(selector) : 
     opacityState ? opacityState = false : opacityState = true;
-    opacityState ? document.getElementById("opacityTaggle").value="Opacity ON" : document.getElementById("opacityTaggle").value="Opacity OFF" 
+    opacityState ? document.getElementById("opacityTaggle").value="ON" : document.getElementById("opacityTaggle").value="OFF" 
 
 };
 //~OnClick~ reset all Opacity

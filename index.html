@@ -8,49 +8,68 @@
         <link rel="icon" href="SnowFlake01.svg">
     </head>
     <body> 
-       
+        
+        <div class="backgroundImage">
+            <!-- Background image -->
+            <img src="IMG_20200425_232208 (1).jpg" />
+        </div>
         <main>
-            <div class="backgroundImage">
-                <!-- Background image -->
-                <img src="IMG_20200425_232208 (1).jpg" />
+            <h1> Etch-A-Sketch</h1>
+            <div id="body">
+                <div id="button-toolbar">
+                    <div id="color" class="button-toolbar">
+                        <p class="button-toolbar-label">Pick a Color</p>
+                        <button onclick="randnomColor()">Get Random Color</button>
+                        <input type="color" id="selectedColor" value="#771100" onchange="colorChange(this.value);" />             
+                    </div>
+                    <div class="line"></div>
+                    <div id="opacity" class="button-toolbar">
+                        <p class="button-toolbar-label">Change Opacity by 20%</p>
+                        <input id="opacityTaggle" type="button" onclick="opacityTaggle()" value="OFF" />
+                        <button onclick="opacityRest()">Rest all Opacity</button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="button-toolbar">
+                        <p class="button-toolbar-label">Set Background Color</p>
+                        <div class="radio-toolbar" >
+                            <input type="radio" id="#CC6633"name="radioBackgroundColor" value="#CC6633"  onclick="backgroundColorChange('#CC6633');" checked>
+                            <label for="#CC6633" class="radio" id="test"></label>
+                            <input type="radio" id="#FF9900" name="radioBackgroundColor" value="#FF9900"  onclick="backgroundColorChange('#FF9900');">
+                            <label for="#FF9900" class="radio" ></label>
+                            <input type="radio" id="#999999"  name="radioBackgroundColor" value="#999999"  onclick="backgroundColorChange('#999999');">
+                            <label for="#999999" class="radio"></label>
+                            <input type="radio" id="#CCCCCC"  name="radioBackgroundColor" value="#CCCCCC"  onclick="backgroundColorChange('#CCCCCC');">
+                            <label for="#CCCCCC" class="radio"></label>
+                            <input type="radio" id="#771100" name="radioBackgroundColor" value="#771100"  onclick="backgroundColorChange('#771100');">
+                            <label for="#771100" class="radio" ></label>
+                        </div>
+                    </div>    
+                    <div class="line"></div>
+                    <div id="slideContainer" class="button-toolbar">
+                        <p class="button-toolbar-label">Pick Grid Size</p>
+                        <input id="slide" type="range" min="1" max="75" step="1" value="16" oninput="updateSlider(this.value)">
+                    </div>
+                    <div class="line"></div>
+                    <div id="reset" class="button-toolbar">
+                        <button onclick="Reset()">Reset</button>
+                    </div>
+                </div>
+                
+                <div id="containerHolder">
+                    <div id="container"> 
+                        <!-- hold my javascript grid divs --> 
+                    </div> 
+                 </div>
             </div>
-            <h1> header</h1>
-            <button onclick="Reset()">Reset</button>
-            <button onclick="randnomColor()">Get Random Color</button>
-            <input id="opacityTaggle" type="button" onclick="opacityTaggle()" value="Opacity OFF" />
-            <button onclick="opacityRest()">Rest all Opacity</button>
-            <input type="color" id="selectedColor" value="#771100" onchange="colorChange(this.value);" />
-
-
-            <div class="radio-toolbar">
-                <input type="radio" id="#CC6633"name="radioBackgroundColor" value="#CC6633"  onclick="backgroundColorChange('#CC6633');" checked>
-                     <label for="#CC6633" class="radio" id="test"></label>
-                <input type="radio" id="#FF9900" name="radioBackgroundColor" value="#FF9900"  onclick="backgroundColorChange('#FF9900');">
-                    <label for="#FF9900" class="radio" ></label>
-                <input type="radio" id="#999999"  name="radioBackgroundColor" value="#999999"  onclick="backgroundColorChange('#999999');">
-                     <label for="#999999" class="radio"></label>
-                <input type="radio" id="#CCCCCC"  name="radioBackgroundColor" value="#CCCCCC"  onclick="backgroundColorChange('#CCCCCC');">
-                    <label for="#CCCCCC" class="radio"></label>
-                <input type="radio" id="#771100" name="radioBackgroundColor" value="#771100"  onclick="backgroundColorChange('#771100');">
-                    <label for="#771100" class="radio" ></label>
             </div>
-            <!-- <p>&nbsp;</p> -->
-           
-
-
-            <input id="slide" type="range" min="1" max="100" step="1" value="16" oninput="updateSlider(this.value)">
-           
-            <div id="container"> 
-                <!-- hold my javascript grid divs --> 
-            </div> 
-
-            <div class="fixed-footer">
-                <!-- footer -->
-                 <div> 
-                     <img src="SnowFlake01.svg" alt="">   Krifty Koding &copy; 2021
-                </div>        
-            </div>
+                <div id="footingPlaceHolder"><!--footing place holder--></div> 
         </main>
+        <div class="fixed-footer">
+            <!-- footer -->
+            <div> 
+                 <img src="SnowFlake01.svg" alt="">   Krifty Koding &copy; 2021
+            </div>        
+        </div>
         
         <script src="script.js"></script>
     </body>
