@@ -6,29 +6,29 @@ let randnomColorCalcVar = false;
 let opacityState = false;
 let opacityIncreaseVar = false;
 let containerSize = 45;
+let hooverOff = false;
 setGridSize(16);
-
-
 //************************************************************************************************************************************************************************
-//**********************************************************MediaQuery**************************************************************************************************
+//**********************************************************on-click hover**************************************************************************************************
 //************************************************************************************************************************************************************************
-// Create a condition that targets viewports at least 768px wide
-const mediaQuery = window.matchMedia('(max-width: 1080px)')
-
-function handleTabletChange(e) {
-  // Check if the media query is true
-  if (e.matches) {
-    document.getElementById("slide").value = 3
-    updateSlider(3);
-  }
-  else {
-    document.getElementById("slide").value = 16
-    updateSlider(16);}
+function hoverIndicator(parametor){
+  parametor ? hooverOff = eval(parametor) :
+   hooverOff ? hooverOff = false : hooverOff = true;
+  hooverOff ? document.getElementById("hoverIndicator").value="OFF" : document.getElementById("hoverIndicator").value="ON" 
 }
-// mediaQuery.addListener(handleTabletChange);
-mediaQuery.addEventListener("change", handleTabletChange);
-handleTabletChange(mediaQuery);
 
+let doc = document.querySelector("main")
+doc.addEventListener("click", e => {
+  if (e.target.tagName == "BUTTON" || e.target.tagName == "INPUT"){
+    if (e.target.id == "hoverIndicator") {
+      hoverIndicator(); 
+      return;
+    }
+    hoverIndicator("false")
+    return;
+  }
+  hoverIndicator();
+})
 
 
 //************************************************************************************************************************************************************************
@@ -37,7 +37,7 @@ handleTabletChange(mediaQuery);
 //set number of columns and rows in grid
 function setGridSize(slideAmount){
   let gridSizeCalc = ((containerSize/slideAmount));// calc info = (gridWidth - (borderSize * 2 * numberColumns))/ numberColumns
-
+  
   makeGrid(gridSizeCalc); 
 }
 // creates grid
@@ -59,12 +59,17 @@ function hoverActivate(){
   let grid = document.querySelectorAll(".grid");
   grid.forEach(hoover => {
     hoover.addEventListener("mouseover", function(e) {
-      const gridNum = e.target.id;
-      if (randnomColorCalcVar) {randomColorCalculator(gridNum) };
-      hoverColor(gridNum); 
-      opacityState ? changeOpacity(gridNum) : null;
-    });
-  })
+      console.log("%%%%%%%%%%%%5");
+        if (hooverOff){
+          return; 
+        } else {
+            const gridNum = e.target.id;
+            if (randnomColorCalcVar) {randomColorCalculator(gridNum) };
+            hoverColor(gridNum); 
+            opacityState ? changeOpacity(gridNum) : null;
+        }
+      });
+    })
 }
 //************************************************************************************************************************************************************************
 //**********************************************************Reset Grid to Original State**********************************************************************************
@@ -84,7 +89,8 @@ function Reset(){
 function randnomColor(){
   randnomColorCalcVar = true;
   opacityTaggle("false");
-  hoverActivate();      
+  hoverActivate();
+
 }
 //assign grid random color for hoverActivat()
 function randomColorCalculator(gridNum){
@@ -100,6 +106,7 @@ function colorChange(newColor){
   color = newColor;
   randnomColorCalcVar = false;
   opacityTaggle("false");
+  hooverOff = true;
   hoverActivate();
 }
 //assign grid color for hoverActivat()
@@ -113,7 +120,7 @@ function backgroundColorChange(colorBack){
   for (let i = 1; i < (gridSize + 1); i++) { 
     const gridNum = "grid" + i;
     document.getElementById(gridNum).style.backgroundColor = colorBack;
-
+    
   }
 }
 
@@ -124,32 +131,41 @@ function backgroundColorChange(colorBack){
 //~OnClick~ turn opacity on/off
 function opacityTaggle(selector){
   selector ? opacityState = eval(selector) : 
-    opacityState ? opacityState = false : opacityState = true;
-    opacityState ? document.getElementById("opacityTaggle").value="ON" : document.getElementById("opacityTaggle").value="OFF" 
-
+  opacityState ? opacityState = false : opacityState = true;
+  opacityState ? document.getElementById("opacityTaggle").value="ON" : document.getElementById("opacityTaggle").value="OFF" 
+  
 };
 //~OnClick~ reset all Opacity
 function opacityRest(){
   for (let i = 1; i < (gridSize + 1); i++) { 
     const gridNum = document.querySelector(`#grid${i}`);
     gridNum.style.opacity = 1;
-    }
+  }
 }
 //calc if opacity increases or decreases
 function changeOpacity(gridNum){
   let currentOpacity = Number(document.getElementById(gridNum).style.opacity);
   if (currentOpacity >= 1) {opacityIncreaseVar = false};
   if (currentOpacity <= 0) {opacityIncreaseVar = true};
+  console.log("$$$$$changeOpacity  " + gridNum);
+  console.log("currentOpacity " + currentOpacity);
+  console.log("opacityIncreaseVar " + opacityIncreaseVar);
   opacityIncreaseVar ? opacityIncrease(gridNum, currentOpacity) : opacityDecrease(gridNum, currentOpacity);
   
 }
 //keep Opacity the same
 function opacityIncrease(gridNum, currentOpacity){
   let newOpacity = (currentOpacity + .20)
+  console.log("####opacityIncrease " + gridNum);
+  console.log("currentOpacity " + currentOpacity);
+  console.log("newOpacity " + newOpacity);
   document.getElementById(gridNum).style.opacity = newOpacity; 
 }
 function opacityDecrease(gridNum, currentOpacity){
   let newOpacity = (currentOpacity - .20);
+  console.log("###opacityIncrease#" + gridNum);
+  console.log("currentOpacity " + currentOpacity);
+  console.log("newOpacity " + newOpacity);
   document.getElementById(gridNum).style.opacity = newOpacity;
 }
 
@@ -183,3 +199,23 @@ function radio(){
     radioButton[i].style.backgroundColor = radioColor; 
   }
 }
+
+//************************************************************************************************************************************************************************
+//**********************************************************MediaQuery**************************************************************************************************
+//************************************************************************************************************************************************************************
+// Create a condition that targets viewports at least 768px wide
+const mediaQuery = window.matchMedia('(max-width: 1080px)')
+
+function handleTabletChange(e) {
+  // Check if the media query is true
+  if (e.matches) {
+    document.getElementById("slide").value = 3
+    updateSlider(3);
+  }
+  else {
+    document.getElementById("slide").value = 16
+    updateSlider(16);}
+}
+// mediaQuery.addListener(handleTabletChange);
+mediaQuery.addEventListener("change", handleTabletChange);
+handleTabletChange(mediaQuery);

@@ -17,6 +17,14 @@
             <h1> Etch-A-Sketch</h1>
             <div id="body">
                 <div id="button-toolbar">
+                    <div class="button-toolbar">
+                        <div id="button-toolbar-label-hover">
+                            <p id="hooverIndicatorLabel">Hoover Indicator</p>
+                            <div id="hooverIndicatorNote">*ON/Off with click</div>
+                        </div>
+                        <input id="hoverIndicator" type="button" value="ON" oninput="hoverIndicator()">
+                    </div>
+                    <div class="line"></div>
                     <div id="color" class="button-toolbar">
                         <p class="button-toolbar-label">Pick a Color</p>
                         <button onclick="randnomColor()">Get Random Color</button>
@@ -26,7 +34,7 @@
                     <div id="opacity" class="button-toolbar">
                         <p class="button-toolbar-label">Change Opacity by 20%</p>
                         <input id="opacityTaggle" type="button" onclick="opacityTaggle()" value="OFF" />
-                        <button onclick="opacityRest()">Rest all Opacity</button>
+                        <button onclick="opacityRest()">Reset all Opacity</button>
                     </div>
                     <div class="line"></div>
                     <div class="button-toolbar">

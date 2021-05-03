@@ -79,14 +79,13 @@ h1{
 }
 .button-toolbar{
   width: 100%;
-  height: 20%;
+  height: 16.67%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .button-toolbar-label{
   width: 100%;
-  height: 3%;
   color: #FF9900;
   align-self: center;
   text-align: center;
@@ -94,24 +93,48 @@ h1{
   font-weight: bold;
   text-decoration: underline;
 }
+#button-toolbar-label-hover{
+  width: 100%;
+  color: #FF9900;
+  align-self: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .line {
   height: .5%;
   width: 100%;
   background-color: black;
 }
-#reset{
-  align-content: center;
-}
 button, input{
   height: 21%;
   font-size: 15px;
 }
+#hooverIndicatorLabel{
+  margin-bottom: 0;
+  text-decoration: underline;
+}
+#hooverIndicatorNote{
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
+}
+#hoverIndicator{
+  justify-self: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
 #selectedColor{
   width: 40%
 }
-/*  */
+#reset{
+  align-content: center; 
+  margin-top: -5%;
+}
 /* Radio Buttons */
-/*  */
 .radio-toolbar {
   width: 100%;
   height: 20%;

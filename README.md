@@ -1,11 +1,5 @@
 <!-- Current Updtate -->
--- messing with random color and input colorSelector
--- screw with grid size
---media querry so look good on phone
---layout
---worked on looks
+-reset button spellcheck
+-click hover on and off (nnew function)
 
-<!-- do I have to many functions -->
-updateslide/removegrid/setgrid size
-
-color box onl click one???
+--fixed opacity problem was calling hover duplicate in click on and off 
